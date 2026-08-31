@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wectra -02 -Iinclude -D_POSIX_C_SOURCE=200809l
+CFLAGS = -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L
 LDFLAGS = -lncurses
 
 SRC = $(wildcard src/*.c)

@@ -30,7 +30,10 @@ static void parse_proc_stat(pid_t pid, proc_info_t *proc) {
     if (!fp) return;
 
     proc->pid = pid;
-    fscanf(fp, "%*d (%63[^)]) %c", proc->name, &proc->state);
+    if (fscanf(fp, "%*d (%63[^)]) %c", proc->name, &proc->state) != 2) {
+        fclose(fp);
+        return;
+    }
 
     unsigned long utime = 0, stime = 0;
     long rss = 0;
